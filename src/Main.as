@@ -28,7 +28,7 @@
 
 package {	
 	import org.flixel.*;
-	import io.resonate.asymmetric.*;
+	import io.resonate.asymmetric.engine.*;
 
 	[SWF(width="640", height="480", backgroundColor="#000000")]
 	[Frame(factoryClass="Preloader")]
