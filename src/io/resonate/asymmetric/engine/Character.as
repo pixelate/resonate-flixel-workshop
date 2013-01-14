@@ -22,9 +22,11 @@ package io.resonate.asymmetric.engine
 		override public function update():void
 		{
 		  moveAtConstantSpeed(200);
+		  stayInsideLevel();
+		  super.update();
 		}
 		
-		protected function moveAtConstantSpeed(speed: int):void
+		private function moveAtConstantSpeed(speed: int):void
 		{
       velocity.x = 0;
       velocity.y = 0;
@@ -47,6 +49,25 @@ package io.resonate.asymmetric.engine
 				velocity.y += speed;
 			}		  
 		}
+	
+	  private function stayInsideLevel():void
+	  {
+	    if(x < 0) {
+	      x = 0;
+	    }
+	    else if(x > FlxG.width - width)
+	    {
+	      x = FlxG.width - width;
+	    }
+	    
+	    if(y < 0) {
+	      y = 0;
+	    }
+	    else if(y > FlxG.height - height)
+	    {
+	      y = FlxG.height - height;
+	    }
+	  }
 	
   	private function mapControls(playerId:int):void
   	{
