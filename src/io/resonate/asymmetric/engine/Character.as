@@ -5,6 +5,8 @@ package io.resonate.asymmetric.engine
 	public class Character extends FlxSprite
 	{
 	  public var playerId: int;
+	  public var characterName: String = "CHARACTER";
+	  public var speed: int = 200;
 	  		
     protected var keyUp: String;
     protected var keyDown: String;
@@ -13,9 +15,8 @@ package io.resonate.asymmetric.engine
     protected var keyAttack: String;
 
     // How many seconds the player has to wait before doing another attack
-    protected var cooldownInSeconds: Number = 0.3;
-    
-    private var _cooldownTimer: FlxTimer = new FlxTimer();
+    protected var cooldownInSeconds: Number = 0.3;    
+    protected var cooldownTimer: FlxTimer = new FlxTimer();
 
 		public function Character(playerId: int)
 		{		  
@@ -30,17 +31,16 @@ package io.resonate.asymmetric.engine
 
       FlxG.watch(this, "facing", "facing");
 
-		  _cooldownTimer.start(cooldownInSeconds);
+		  cooldownTimer.start(cooldownInSeconds);
 		}
 
 		override public function update():void
 		{
-		  if(FlxG.keys[keyAttack] && _cooldownTimer.finished)
+		  if(FlxG.keys[keyAttack] && cooldownTimer.finished)
 		  {
 		    attack();
 		  }
 		  
-		  moveAtConstantSpeed(200);
 		  updateFacing();
 		  stayInsideLevel();
 		  super.update();
@@ -48,13 +48,20 @@ package io.resonate.asymmetric.engine
 		
 		protected function attack():void
 		{
-		  var projectile: Projectile = new Projectile(x + width / 2, y + height / 2, facing, playerId);
+		  var projectile: Projectile = createProjectile();
+		  
 		  var state: PlayState = PlayState(FlxG.state);
 		  state.addProjectile(projectile);
-		  _cooldownTimer.start(cooldownInSeconds);
+		  cooldownTimer.start(cooldownInSeconds);
 		}
 		
-		private function moveAtConstantSpeed(speed: int):void
+		protected function createProjectile():Projectile
+		{		  
+		  var projectile: Projectile = new Projectile(x + width / 2, y + height / 2, facing, playerId);
+		  return projectile;
+		}
+		
+		protected function moveAtConstantSpeed(speed: int):void
 		{
       velocity.x = 0;
       velocity.y = 0;

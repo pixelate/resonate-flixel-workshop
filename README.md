@@ -41,3 +41,21 @@ FlxG.watch(this, "x", "Character X");
 # Finding your way around in Flixel
 
 Flixel has a recommended way of doing things for many common design problems. Make sure to familiarize   yourself with its features (http://flixel.org/features.html) and documentation (http://flixel.org/docs/). The source code for Flixel is contained in the workshop project under ```src/org/flixel```. Have a look into the Flixel classes (especially ```FlxSprite```) if you want to better understand how things work.
+
+# Game controls
+
+## Player One
+
+W – Up
+A – Left
+S – Down
+D – Right
+SHIFT – Attack
+
+## Player Two
+
+ARROW UP – Up
+ARROW LEFT – Left
+ARROW DOWN – Down
+ARROW LEFT – Right
+SPACE – Attack

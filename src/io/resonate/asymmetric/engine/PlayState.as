@@ -10,9 +10,8 @@ package io.resonate.asymmetric.engine
 		private var _players: FlxGroup;
 	  private var _playerEnergyDisplays: Array = new Array();
     private var _characterClasses: Array = [
-      CharacterBlue,
-      CharacterGreen,
-      CharacterRed
+      CharacterKnight,
+      CharacterArcher
     ];
     
     private var _notifications: FlxText;
@@ -20,8 +19,8 @@ package io.resonate.asymmetric.engine
     
 		override public function create():void
 		{
-		  createProjectiles();
       createPlayers();     
+		  createProjectiles();
       createHud(); 
       _gameOver = false;
 			super.create();
@@ -48,11 +47,19 @@ package io.resonate.asymmetric.engine
 		
 		private function overlapPlayersProjectiles(player: Character, projectile: Projectile):void
 		{
-		  // Make sure player can't hit him or herself
-		  if(player.playerId != projectile.playerId)
+		  // Make sure player can't hit him or herself and that projectile didn't already do damage
+		  if(player.playerId != projectile.playerId && projectile.alive)
 		  {
   		  player.hurt(projectile.damage);
-  		  projectile.kill();		    
+  		  
+  		  if(projectile.disappearsOnCollision)
+  		  {
+    		  projectile.kill();		      		    
+  		  }
+  		  else
+  		  {
+  		    projectile.alive = false;
+  		  }
 		  }
 		}
 		
@@ -98,11 +105,11 @@ package io.resonate.asymmetric.engine
 		
 		private function createHud():void
 		{
-		  var hudPlayer1: FlxText = new FlxText(10, 10, 200, "PLAYER ONE");
+		  var hudPlayer1: FlxText = new FlxText(10, 10, 200, _players.members[0].characterName);
 		  hudPlayer1.size = 16;
 		  add(hudPlayer1);
 
-		  var hudPlayer2: FlxText = new FlxText(FlxG.width - 210, 10, 200, "PLAYER TWO");
+		  var hudPlayer2: FlxText = new FlxText(FlxG.width - 210, 10, 200, _players.members[1].characterName);
 		  hudPlayer2.alignment = "right";
 		  hudPlayer2.size = 16;
 		  add(hudPlayer2);

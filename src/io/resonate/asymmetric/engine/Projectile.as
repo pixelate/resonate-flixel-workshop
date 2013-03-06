@@ -4,34 +4,30 @@ package io.resonate.asymmetric.engine
 
 	public class Projectile extends FlxSprite
 	{		
-	  public var damage: Number = 20;
 	  public var playerId: int;
+	  public var damage: Number = 0;
+	  public var disappearsOnCollision: Boolean = true;
+
+    // How many seconds the projectile is alive
+    protected var lifetimeInSeconds: Number = 5;
+    
+    private var _lifetimeTimer: FlxTimer = new FlxTimer();
+
 	  
 		public function Projectile(x: Number, y: Number, direction: uint, playerId: int):void
 		{
 			super(x, y);
       this.playerId = playerId;
-
-      if(direction == LEFT)
-      {
-        velocity.x = -1000;  			
-  			makeGraphic(8, 1, 0xFFFFFFFF);
-      }
-      else if(direction == RIGHT)
-      {
-        velocity.x = 1000;
-  			makeGraphic(8, 1, 0xFFFFFFFF);
-      }
-      else if(direction == UP)
-      {
-        velocity.y = -1000;
-  			makeGraphic(1, 8, 0xFFFFFFFF);
-      }
-      else if(direction == DOWN)
-      {
-        velocity.y = 1000;        
-  			makeGraphic(1, 8, 0xFFFFFFFF);
-      }
+		}
+		
+		protected function init():void
+		{
+      _lifetimeTimer.start(lifetimeInSeconds, 1, onLifetimeTimer);		  
+		}
+		
+		private function onLifetimeTimer(Timer:FlxTimer):void
+		{
+		  kill();
 		}
 	}
 }
