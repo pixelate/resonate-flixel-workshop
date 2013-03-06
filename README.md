@@ -46,16 +46,20 @@ Flixel has a recommended way of doing things for many common design problems. Ma
 
 ## Player One
 
-W – Up
-A – Left
-S – Down
-D – Right
+```
+W – Move Up
+A – Move Left
+S – Move Down
+D – Move Right
 SHIFT – Attack
+```
 
 ## Player Two
 
-ARROW UP – Up
-ARROW LEFT – Left
-ARROW DOWN – Down
-ARROW LEFT – Right
+```
+ARROW UP – Move Up
+ARROW LEFT – Move Left
+ARROW DOWN – Move Down
+ARROW LEFT – Move Right
 SPACE – Attack
+```
