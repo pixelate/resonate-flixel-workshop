@@ -6,6 +6,9 @@ package io.resonate.asymmetric.engine
 
 	public class PlayState extends FlxState
 	{		
+		[Embed(source="../../../../../assets/sound/hurt.mp3")] public static var SoundHurt:Class;
+		[Embed(source="../../../../../assets/sound/gameover.mp3")] public static var SoundGameOver:Class;
+
 	  private var _projectiles: FlxGroup;
 		private var _players: FlxGroup;
 	  private var _playerEnergyDisplays: Array = new Array();
@@ -51,6 +54,7 @@ package io.resonate.asymmetric.engine
 		  if(player.playerId != projectile.playerId && projectile.alive)
 		  {
   		  player.hurt(projectile.damage);
+  		  FlxG.play(SoundHurt);
   		  
   		  if(projectile.disappearsOnCollision)
   		  {
@@ -146,8 +150,12 @@ package io.resonate.asymmetric.engine
 		
 		private function gameOver():void
 		{
-		  _notifications.text = "GAME OVER\nPRESS R TO PLAY AGAIN";
-		  _gameOver = true;
+		  if(!_gameOver)
+		  {
+  		  _notifications.text = "GAME OVER\nPRESS R TO PLAY AGAIN";
+  		  _gameOver = true;
+  		  FlxG.play(SoundGameOver);		    
+		  }
 		}
 	}
 }

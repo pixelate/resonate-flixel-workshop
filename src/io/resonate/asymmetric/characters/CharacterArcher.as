@@ -1,10 +1,14 @@
 package io.resonate.asymmetric.characters
 {
+	import org.flixel.*;
 	import io.resonate.asymmetric.engine.*;
 	import io.resonate.asymmetric.projectiles.*;
+	import io.resonate.asymmetric.sound.*;
 	
 	public class CharacterArcher extends Character
 	{		
+		[Embed(source="../../../../../assets/sound/arrow.mp3")] public static var SoundArrow:Class;
+
 		public function CharacterArcher(playerId: int)
 		{
       super(playerId);
@@ -24,6 +28,7 @@ package io.resonate.asymmetric.characters
 		
 		override protected function createProjectile():Projectile
 		{		  
+      FlxG.play(SoundArrow);
 		  var projectile: Projectile = new ProjectileArrow(x + width / 2, y + height / 2, facing, playerId);
 		  return projectile;
 		}		

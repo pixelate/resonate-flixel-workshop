@@ -1,10 +1,13 @@
 package io.resonate.asymmetric.characters
 {
+	import org.flixel.*;
 	import io.resonate.asymmetric.engine.*;
 	import io.resonate.asymmetric.projectiles.*;
 	
 	public class CharacterKnight extends Character
-	{		
+	{	
+	  [Embed(source="../../../../../assets/sound/sword.mp3")] public static var SoundSword:Class;
+			
 		public function CharacterKnight(playerId: int)
 		{
       super(playerId);
@@ -33,6 +36,8 @@ package io.resonate.asymmetric.characters
 		
 		override protected function createProjectile():Projectile
 		{		  
+		  FlxG.play(SoundSword);
+		  
 		  var posX: Number = x + width / 2;
 		  var posY: Number = y + height / 2;
 		  
