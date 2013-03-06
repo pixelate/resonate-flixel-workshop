@@ -6,6 +6,7 @@ package io.resonate.asymmetric.engine
 
 	public class PlayState extends FlxState
 	{		
+	  private var _projectiles: FlxGroup;
 		private var _players: FlxGroup;
 	  private var _playerEnergyDisplays: Array = new Array();
     private var _characterClasses: Array = [
@@ -14,18 +15,51 @@ package io.resonate.asymmetric.engine
       CharacterRed
     ];
     
+    private var _notifications: FlxText;
+    private var _gameOver: Boolean;
+    
 		override public function create():void
 		{
+		  createProjectiles();
       createPlayers();     
       createHud(); 
+      _gameOver = false;
 			super.create();
 		}
 
 		override public function update():void
 		{			
 			FlxG.collide(_players);			
-			updateHud();
+			FlxG.overlap(_players, _projectiles, overlapPlayersProjectiles);
+			updateHealth();
+			
+			if(_gameOver && FlxG.keys.R)
+			{
+			  FlxG.switchState(new PlayState());
+			}
+			
 			super.update();
+		}
+		
+		public function addProjectile(projectile: Projectile):void
+		{
+		  _projectiles.add(projectile);
+		}
+		
+		private function overlapPlayersProjectiles(player: Character, projectile: Projectile):void
+		{
+		  // Make sure player can't hit him or herself
+		  if(player.playerId != projectile.playerId)
+		  {
+  		  player.hurt(projectile.damage);
+  		  projectile.kill();		    
+		  }
+		}
+		
+		private function createProjectiles():void
+		{
+			_projectiles = new FlxGroup();
+			add(_projectiles);
 		}
 		
 		private function createPlayers():void
@@ -81,20 +115,32 @@ package io.resonate.asymmetric.engine
       playerEnergyDisplay2.makeGraphic(200, 10);
       _playerEnergyDisplays.push(playerEnergyDisplay2);
 
+      _notifications = new FlxText(20, FlxG.height / 2, FlxG.width - 40, "");
+		  _notifications.alignment = "center";
+		  _notifications.size = 16;
+
       add(playerEnergyDisplay1);
       add(playerEnergyDisplay2);
+      add(_notifications);
 		}
 		
-		private function updateHud():void
+		private function updateHealth():void
 		{
 		  for (var i:int = 0; i < 2; i++)
       {
         var health: int = _players.members[i].health;
-        if(health < 0) {
-          health = 0;
+        if(health <= 1) {
+          gameOver();
+          health = 1;
         }
         _playerEnergyDisplays[i].makeGraphic(200 * health/100, 10); 
       }
+		}
+		
+		private function gameOver():void
+		{
+		  _notifications.text = "GAME OVER\nPRESS R TO PLAY AGAIN";
+		  _gameOver = true;
 		}
 	}
 }
