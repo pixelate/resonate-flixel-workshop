@@ -26,3 +26,18 @@ Compile the workshop project using mxmlc:
 ```
 
 Open the ```Main.swf``` file using the Flash Player Debugger.
+
+# Debugging
+
+You can display the development console at any time while playing by pressing the '~' or tilde key on your keyboard. (The key is next to the left Shift key, it might have a different symbol on it on international keyboards.)
+
+```
+FlxG.log("This is a test.");
+
+// Use inside a character class
+FlxG.watch(this, "x", "Character X");
+```
+
+# Finding your way around in Flixel
+
+Flixel has a recommended way of doing things for many common design problems. Make sure to familiarize   yourself with its features (http://flixel.org/features.html) and documentation (http://flixel.org/docs/). The source code for Flixel is contained in the workshop project under ```src/org/flixel```. Have a look into the Flixel classes (especially ```FlxSprite```) if you want to better understand how things work.

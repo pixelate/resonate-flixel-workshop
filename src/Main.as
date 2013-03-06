@@ -37,6 +37,7 @@ package {
 	{
 		public function Main():void
 		{
+		  FlxG.debug = true;
 			super(640, 480, PlayState, 1);
 		}
 	}

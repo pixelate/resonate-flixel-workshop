@@ -7,6 +7,7 @@ package io.resonate.asymmetric.engine
 	public class PlayState extends FlxState
 	{		
 		private var _players: FlxGroup;
+	  private var _playerEnergyDisplays: Array = new Array();
     private var _characterClasses: Array = [
       CharacterBlue,
       CharacterGreen,
@@ -15,13 +16,15 @@ package io.resonate.asymmetric.engine
     
 		override public function create():void
 		{
-      createPlayers();      
+      createPlayers();     
+      createHud(); 
 			super.create();
 		}
 
 		override public function update():void
 		{			
-			FlxG.collide(_players);
+			FlxG.collide(_players);			
+			updateHud();
 			super.update();
 		}
 		
@@ -57,6 +60,41 @@ package io.resonate.asymmetric.engine
       }
       
       return selectedCharacterClasses;
+		}
+		
+		private function createHud():void
+		{
+		  var hudPlayer1: FlxText = new FlxText(10, 10, 200, "PLAYER ONE");
+		  hudPlayer1.size = 16;
+		  add(hudPlayer1);
+
+		  var hudPlayer2: FlxText = new FlxText(FlxG.width - 210, 10, 200, "PLAYER TWO");
+		  hudPlayer2.alignment = "right";
+		  hudPlayer2.size = 16;
+		  add(hudPlayer2);
+
+      var playerEnergyDisplay1: FlxSprite = new FlxSprite(12, 36);
+      playerEnergyDisplay1.makeGraphic(200, 10);
+      _playerEnergyDisplays.push(playerEnergyDisplay1);
+
+      var playerEnergyDisplay2: FlxSprite = new FlxSprite(FlxG.width - 212, 36);
+      playerEnergyDisplay2.makeGraphic(200, 10);
+      _playerEnergyDisplays.push(playerEnergyDisplay2);
+
+      add(playerEnergyDisplay1);
+      add(playerEnergyDisplay2);
+		}
+		
+		private function updateHud():void
+		{
+		  for (var i:int = 0; i < 2; i++)
+      {
+        var health: int = _players.members[i].health;
+        if(health < 0) {
+          health = 0;
+        }
+        _playerEnergyDisplays[i].makeGraphic(200 * health/100, 10); 
+      }
 		}
 	}
 }
