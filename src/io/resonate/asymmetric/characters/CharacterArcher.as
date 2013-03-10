@@ -3,7 +3,6 @@ package io.resonate.asymmetric.characters
 	import org.flixel.*;
 	import io.resonate.asymmetric.engine.*;
 	import io.resonate.asymmetric.projectiles.*;
-	import io.resonate.asymmetric.sound.*;
 	
 	public class CharacterArcher extends Character
 	{		
