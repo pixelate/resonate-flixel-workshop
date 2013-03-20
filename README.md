@@ -67,14 +67,23 @@ SPACE – Attack
 # Workshop schedule
 
 10:00 Workshop goals
+
 10:15 Round of introductions
+
 10:30 Walkthrough AS3 project + game logic
+
 11:00 Setup development environment
+
 11:30 Make a quick concept for your game character
+
 11:45 Start coding!
+
 14:00 Lunch
+
 17:00 All character classes must be in Dropbox
+
 17:30 Play session with all game characters
+
 18:30 Wrap-up
 
 # Rules
@@ -85,7 +94,7 @@ SPACE – Attack
 * Your character must have strenghs and weaknesses
 * Playtest your character constantly with other participants
 
-## How to design your character
+# How to design your character
 
 * Iterative design process – Design, Build, Test
 * Flow theory – Not too easy, not too hard
