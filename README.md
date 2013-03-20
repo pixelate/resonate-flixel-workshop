@@ -29,7 +29,7 @@ Open the ```Main.swf``` file using the Flash Player Debugger.
 
 # Debugging
 
-You can display the development console at any time while playing by pressing the '~' or tilde key on your keyboard. (The key is next to the left Shift key, it might have a different symbol on it on international keyboards.)
+You can display the development console at any time while playing by pressing the '~' or tilde key on your keyboard. (The key is next to the left Shift key, it might have a different symbol on international keyboards.)
 
 ```
 FlxG.log("This is a test.");
@@ -63,3 +63,35 @@ ARROW DOWN – Move Down
 ARROW LEFT – Move Right
 SPACE – Attack
 ```
+
+# Workshop schedule
+
+10:00 Workshop goals
+10:15 Round of introductions
+10:30 Walkthrough AS3 project + game logic
+11:00 Setup development environment
+11:30 Make a quick concept for your game character
+11:45 Start coding!
+14:00 Lunch
+17:00 All character classes must be in Dropbox
+17:30 Play session with all game characters
+18:30 Wrap-up
+
+# Rules
+
+* Build exactly one character class
+* Build one or more projectile classes that your character can use a weapon
+* You must not modify any other classes (except for testing your classes)
+* Your character must have strenghs and weaknesses
+* Playtest your character constantly with other participants
+
+## How to design your character
+
+* Iterative design process – Design, Build, Test
+* Flow theory – Not too easy, not too hard
+* What makes your character interesting to play?
+* What are your character's strenghs?
+* What are your character's weaknesses?
+* How does it feel to control your character?
+* Does your character favor a specific play style?
+* What's the best strategy to play this character?
