@@ -1,5 +1,6 @@
 package io.resonate.asymmetric.engine
 {
+  import flash.display.StageDisplayState;
   import flash.utils.getDefinitionByName;
   import io.resonate.asymmetric.characters.*;
 	import org.flixel.*;
@@ -22,6 +23,7 @@ package io.resonate.asymmetric.engine
     
 		override public function create():void
 		{
+      FlxG.stage.displayState = StageDisplayState.FULL_SCREEN;
       createPlayers();     
 		  createProjectiles();
       createHud(); 
