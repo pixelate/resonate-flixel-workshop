@@ -2,7 +2,7 @@
  * The Ghost by Konstantin Fick
  * resonate.io March 2013
  */
- 
+
 package io.resonate.asymmetric.characters {
 	import org.flixel.*;
 

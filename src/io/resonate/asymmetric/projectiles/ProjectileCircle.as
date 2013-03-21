@@ -1,8 +1,3 @@
-/*
- * The Gost by Konstantin Fick
- * resonate.io March 2013
- */
-
 package io.resonate.asymmetric.projectiles {
 
 	import org.flixel.*;
@@ -11,10 +6,10 @@ package io.resonate.asymmetric.projectiles {
 
 	public class ProjectileCircle extends Projectile {
 		[Embed(source="../../../../../assets/graphics/circle.png")] public static var CircleGraphic:Class;
+    
 		public var graphicSize : Number = 128;		
 		public var animationPos : int = 0;
 
-				
 		public function ProjectileCircle(x : Number, y : Number, direction : uint, playerId : int) : void {
 			x -= graphicSize / 2;
 			y -= graphicSize / 2;
@@ -45,7 +40,6 @@ package io.resonate.asymmetric.projectiles {
 			
 			var frame : int = (animationPos / (60.0 * lifetimeInSeconds)) * 8;			
 			play("step" + frame);
-
 		}
 	}
 }
