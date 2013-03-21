@@ -30,7 +30,7 @@ package {
 	import org.flixel.*;
 	import io.resonate.asymmetric.engine.*;
 
-	[SWF(width="640", height="480", backgroundColor="#000000")]
+	[SWF(width="840", height="524", backgroundColor="#000000")]
 	[Frame(factoryClass="Preloader")]
 
 	public class Main extends FlxGame
@@ -38,7 +38,7 @@ package {
 		public function Main():void
 		{
 		  FlxG.debug = true;
-			super(640, 480, PlayState, 2);
+			super(840, 524, PlayState, 2);
 		}
 	}
 }

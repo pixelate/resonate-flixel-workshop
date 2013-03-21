@@ -14,8 +14,8 @@ package io.resonate.asymmetric.engine
 		private var _players: FlxGroup;
 	  private var _playerEnergyDisplays: Array = new Array();
     private var _characterClasses: Array = [
-      CharacterKnight,
-      CharacterArcher
+      CharacterArcher,
+      CharacterGhost
     ];
     
     private var _notifications: FlxText;
@@ -23,6 +23,7 @@ package io.resonate.asymmetric.engine
     
 		override public function create():void
 		{
+      FlxG.bgColor = 0xff222222;
       FlxG.stage.displayState = StageDisplayState.FULL_SCREEN;
       createPlayers();     
 		  createProjectiles();
