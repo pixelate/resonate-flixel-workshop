@@ -5,9 +5,8 @@ package io.resonate.asymmetric.projectiles
 
 	public class ProjectileFlameSword extends Projectile
 	{		
-	[Embed(source="../../../../../assets/graphic/FlameSword.png")] public static var OctohalfGraphic:Class;
-	[Embed(source="../../../../../assets/graphic/flame.png")] public static var FlameGraphic:Class;
-	
+	[Embed(source="../../../../../assets/graphics/FlameSword.png")] public static var OctohalfGraphic:Class;
+	[Embed(source="../../../../../assets/graphics/flame.png")] public static var FlameGraphic:Class;
 	
 	 private var timer: FlxTimer = new FlxTimer();
 	 

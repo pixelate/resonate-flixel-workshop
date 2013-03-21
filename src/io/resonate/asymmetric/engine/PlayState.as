@@ -14,10 +14,12 @@ package io.resonate.asymmetric.engine
 		private var _players: FlxGroup;
 	  private var _playerEnergyDisplays: Array = new Array();
     private var _characterClasses: Array = [
+      CharacterOctohalf,
+
       CharacterBirdman,
-      CharacterScreamer,
-      
-      /*CharacterPera,
+
+/*      CharacterScreamer,
+      CharacterPera,
       CharacterYeti,
       CharacterDarkmage,
       CharacterPejs,
