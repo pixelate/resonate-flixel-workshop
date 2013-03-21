@@ -25,7 +25,7 @@ package io.resonate.asymmetric.engine
       _lifetimeTimer.start(lifetimeInSeconds, 1, onLifetimeTimer);		  
 		}
 		
-		private function onLifetimeTimer(Timer:FlxTimer):void
+		protected function onLifetimeTimer(Timer:FlxTimer):void
 		{
 		  kill();
 		}
